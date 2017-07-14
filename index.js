@@ -4,9 +4,10 @@ ReactWrapper.prototype.getA11yViolations = function (options, callback) {
   a11yCheck(this.getDOMNode(), options, callback)
 }
 
-const Assertion = global.chai.Assertion
-global.chai.use((chai, utils) => {
-  utils.addMethod(Assertion.prototype, 'accessible', function (done, options = {}) {
+module.exports = function ChaiEnzymeAxe (chai, utils) {
+  const Assertion = chai.Assertion
+
+  utils.addMethod(Assertion.prototype, 'accessible', (done, options = {}) => {
     const obj = utils.flag(this, 'object')
 
     obj.getA11yViolations(options, (result) => {
@@ -18,7 +19,7 @@ global.chai.use((chai, utils) => {
       }
     })
   })
-})
+}
 
 function a11yCheck (node, options = {}, done) {
   const exclude = options.exclude || []

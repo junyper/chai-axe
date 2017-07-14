@@ -4,8 +4,9 @@
 [![npm][npm]][npm-url]
 
 # chai-enzyme-axe
-A [chai]() assertion that runs [axe-core]() on an [enzyme]() object to test
-for a11y violations.
+A [chai](http://chaijs.com) assertion that runs
+[axe-core](https://github.com/dequelabs/axe-core) on an
+[enzyme](http://airbnb.io/enzyme/) wrapper object to test for a11y violations.
 
 ## Installation
 
@@ -13,7 +14,16 @@ for a11y violations.
 npm install chai-enzyme-axe
 ```
 
+Follow the instructions on using [axe-core](https://github.com/dequelabs/axe-core).
+
 ## Usage
+
+```js
+import chai from 'chai'
+import ChaiEnzymeAxe from 'chai-enzyme-axe'
+
+chai.use(ChaiEnzymeAxe)
+```
 
 ```js
 import {mount, render, shallow} from 'enzyme'
